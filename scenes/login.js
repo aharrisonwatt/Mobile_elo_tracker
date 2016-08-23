@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, TextInput, TouchableHighlight, StyleSheet, Text } from 'react-native';
-import SessionActions from '../actions/session_actions';
+import SessionReducer from '../reducer/session_reducer';
 
 export default class SessionForm extends Component {
   constructor(props){
@@ -13,8 +13,7 @@ export default class SessionForm extends Component {
 
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit() {
     SessionActions.login({
       username: this.state.username,
       password: this.state.password
