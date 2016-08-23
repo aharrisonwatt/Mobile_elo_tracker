@@ -1,4 +1,13 @@
 import { createStore } from 'redux';
+import RootReducer from '../reducers/root_redcucer';
+import RootMiddleware from '../middleware/root_middleware';
 
+const configureStore = (preloadedState = {}) => (
+  createStore(
+    RootReducer,
+    preloadedState,
+    RootMiddleware
+  )
+);
 
-const store = createStore(reducer);
+export default configureStore;

@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import MyScene from './scenes/MyScene.js'
+import SessionForm from './scenes/login.js'
 
 var MOCKED_MOVIES_DATA = [
   {title: 'Title', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
@@ -21,7 +22,7 @@ var MOCKED_MOVIES_DATA = [
 class AwesomeProject extends Component {
   render() {
     return (
-      < MyScene />
+      < SessionForm />
     );
   }
 }

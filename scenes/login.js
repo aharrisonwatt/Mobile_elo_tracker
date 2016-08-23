@@ -1,37 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {View, TextInput, TouchableHighlight, StyleSheet, Text } from 'react-native';
+import SessionActions from '../actions/session_actions';
 
-class Login extends Component {
+export default class SessionForm extends Component {
   constructor(props){
     super(props);
     this.state = {
       username: '',
       password: '',
     };
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    UserActions.login({
+    SessionActions.login({
       username: this.state.username,
       password: this.state.password
     });
   }
 
-  updatePassword(event) {
-    this.setState({ password: event.target.value});
-  }
-
-  updateUsername(event) {
-    this.setState({ username: event.target.value});
-  }
-
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" value={this.state.username} onChange={this.updateUsername}/>
-        <input type="text" value={this.state.password} onChange={this.updatePassword}/>
-      </form>
+        <View>
+          <TextInput
+                 value={this.state.username}
+                 onChangeText={(username) => this.setState({username: username})}
+          />
+          <TextInput
+                 value={this.state.password}
+                 onChangeText={(password) => this.setState({password: password})}
+          />
+          <TouchableHighlight
+            onPress={this.handleSubmit}>
+            <View>
+              <Text>Submit</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
     )
   }
 }
